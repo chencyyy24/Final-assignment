@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Corp Inc.</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">CORP.</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-i18n="nav_products">Products ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="product-air.html" data-i18n="nav_product_air">Corp Air</a></li>
+                            <li><a href="product-vision.html" data-i18n="nav_product_vision">Corp Vision</a></li>
+                            <li><a href="product-max.html" data-i18n="nav_product_max">Corp Max</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" data-i18n="nav_about">About</a></li> <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-tools">
+                <button id="lang-toggle" style="font-family: inherit;">CN / EN</button>
+                <button id="theme-toggle">🌙 Dark</button>
+                <div class="hamburger">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <h1 data-i18n="about_hero_title">We Are Corp.</h1>
+            <p style="font-size: 1.2rem; color: var(--text-light); margin-top: 15px;" data-i18n="about_hero_desc">
+                Bridging the gap between complex technology and human simplicity. 
+                Founded on the belief that software should be invisible.
+            </p>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color);">
+
+        <section class="split-section">
+            <div class="split-text">
+                <h2 style="margin-bottom: 15px;" data-i18n="about_mission_title">Our Mission</h2>
+                <p style="margin-bottom: 15px; color: var(--text-light);" data-i18n="about_mission_desc_1">
+                    Since 2025, we have dedicated ourselves to one goal: removing friction. 
+                    In a world of noise, Corp provides the signal. We build tools that 
+                    empower businesses to scale without the technical debt.
+                </p>
+                <p style="color: var(--text-light);" data-i18n="about_mission_desc_2">
+                    Whether it's the lightness of <strong>Air</strong>, the clarity of 
+                    <strong>Vision</strong>, or the luxury of <strong>Max</strong>, 
+                    our ecosystem is designed to adapt to you, not the other way around.
+                </p>
+            </div>
+            <div class="split-image">
+                <span data-i18n="about_office_image_placeholder">[ Office Image Placeholder ]</span>
+            </div>
+        </section>
+
+        <section class="stats-container">
+            <div class="stat-item">
+                <h2>500+</h2>
+                <p data-i18n="stat_clients">Enterprise Clients</p>
+            </div>
+            <div class="stat-item">
+                <h2>12</h2>
+                <p data-i18n="stat_offices">Global Offices</p>
+            </div>
+            <div class="stat-item">
+                <h2>99.9%</h2>
+                <p data-i18n="stat_uptime">Uptime Guaranteed</p>
+            </div>
+            <div class="stat-item">
+                <h2>24/7</h2>
+                <p data-i18n="stat_support">Dedicated Support</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; margin-bottom: 10px;" data-i18n="team_title">The Leadership</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px;" data-i18n="team_subtitle">The minds behind the machinery.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar"></div> <h3>Sarah Jenkins</h3>
+                    <p style="color: var(--color-vision); font-size: 0.9rem;" data-i18n="role_ceo">Chief Executive Officer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="avatar"></div>
+                    <h3>David Chen</h3>
+                    <p style="color: var(--color-air); font-size: 0.9rem;" data-i18n="role_cto">CTO & Architect</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="avatar"></div>
+                    <h3>Elena Rossi</h3>
+                    <p style="color: var(--color-max); font-size: 0.9rem;" data-i18n="role_product">Head of Product</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="avatar"></div>
+                    <h3>Marcus Thorne</h3>
+                    <p style="color: var(--text-light); font-size: 0.9rem;" data-i18n="role_design">Design Director</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer_copyright">&copy; 2025 Corp Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

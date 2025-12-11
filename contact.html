@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Corp Inc.</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- 页面特定样式 (可移入 style.css) --- */
+        
+        /* 布局容器 */
+        .contact-wrapper {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .contact-form-section { flex: 3; }
+        .contact-info-section { flex: 2; }
+
+        /* 右侧信息卡片 */
+        .info-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .info-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .info-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px; }
+        .info-card a { font-weight: 500; border-bottom: 1px dotted var(--text-color); }
+
+        /* 办公室网格 */
+        .office-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        /* FAQ Section (HTML5 Native Accordion) */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        details {
+            background: var(--card-bg);
+            margin-bottom: 10px;
+            border-radius: var(--radius);
+            padding: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        details[open] { border: 1px solid var(--border-color); }
+
+        summary {
+            font-weight: 600;
+            list-style: none; /* 移除默认三角 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::after { content: '+'; font-size: 1.2rem; }
+        details[open] summary::after { content: '-'; }
+
+        .answer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .contact-wrapper { flex-direction: column-reverse; }
+            .office-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">CORP.</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-i18n="nav_products">Products ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="product-air.html" data-i18n="nav_product_air">Corp Air</a></li>
+                            <li><a href="product-vision.html" data-i18n="nav_product_vision">Corp Vision</a></li>
+                            <li><a href="product-max.html" data-i18n="nav_product_max">Corp Max</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-tools">
+                <button id="lang-toggle" style="font-family: inherit;">CN / EN</button>
+                <button id="theme-toggle">🌙 Dark</button>
+                <div class="hamburger">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 40px 0 60px 0;">
+            <h1 data-i18n="contact_hero_title">Get in Touch</h1>
+            <p data-i18n="contact_hero_desc">Start a conversation. We are ready to listen.</p>
+        </section>
+
+        <div class="contact-wrapper">
+            
+            <section class="contact-form-section">
+                <h2 style="margin-bottom: 20px;" data-i18n="contact_form_title">Send a Message</h2>
+                <form id="contact-form">
+                    <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div class="form-group" style="margin:0;">
+                            <label for="name" data-i18n="contact_form_name">Full Name *</label>
+                            <input type="text" id="name" placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group" style="margin:0;">
+                            <label for="email" data-i18n="contact_form_email">Work Email *</label>
+                            <input type="email" id="email" placeholder="jane@company.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department" data-i18n="contact_form_department">Department</label>
+                        <select id="department" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-color); color: var(--text-color);">
+                            <option value="sales" data-i18n="contact_form_department_sales">Sales & Partnerships</option>
+                            <option value="support" data-i18n="contact_form_department_support">Technical Support</option>
+                            <option value="press" data-i18n="contact_form_department_press">Media & Press</option>
+                            <option value="other" data-i18n="contact_form_department_other">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact_form_message">How can we help? *</label>
+                        <textarea id="message" rows="6" placeholder="Tell us about your project needs..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;" data-i18n="contact_form_send">Send Message</button>
+                    <p id="form-status" style="margin-top: 15px; display: none;"></p>
+                </form>
+            </section>
+
+            <section class="contact-info-section">
+                <h2 style="margin-bottom: 20px;" data-i18n="contact_direct_channels">Direct Channels</h2>
+                
+                <div class="info-card">
+                    <h3 data-i18n="contact_email_us">Email Us</h3>
+                    <p><strong data-i18n="contact_sales">Sales:</strong> <a href="#">sales@corp.inc</a></p>
+                    <p><strong data-i18n="contact_support">Support:</strong> <a href="#">help@corp.inc</a></p>
+                    <p><strong data-i18n="contact_jobs">Jobs:</strong> <a href="#">careers@corp.inc</a></p>
+                </div>
+
+                <div class="info-card" style="border-left-color: var(--color-max);"> <h3 data-i18n="contact_headquarters">Headquarters</h3>
+                    <p>100 Future Boulevard,</p>
+                    <p>San Francisco, CA 94107</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem;" data-i18n="contact_hours">Mon-Fri, 9am - 6pm PST</p>
+                </div>
+
+                <div class="office-grid">
+                    <div class="info-card" style="margin:0; border-left-color: var(--color-vision);">
+                        <h3 data-i18n="contact_london">London</h3>
+                        <p>12 Tech Avenue</p>
+                        <p>Shoreditch, UK</p>
+                    </div>
+                    <div class="info-card" style="margin:0; border-left-color: var(--color-air);">
+                        <h3 data-i18n="contact_tokyo">Tokyo</h3>
+                        <p>Roppongi Hills</p>
+                        <p>Minato City, JP</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="faq-section">
+            <h2 style="text-align: center; margin-bottom: 30px;" data-i18n="faq_title">Frequently Asked Questions</h2>
+            
+            <details>
+                <summary data-i18n="faq_q1">What is the typical response time?</summary>
+                <div class="answer">
+                    For <strong data-i18n="tier_max">Max</strong> members, we respond within 1 hour. For Standard inquiries, please allow up to 24 hours via email.
+                </div>
+            </details>
+
+            <details>
+                <summary data-i18n="faq_q2">Do you offer custom enterprise plans?</summary>
+                <div class="answer">
+                    Yes. Select "Sales & Partnerships" in the form above, and our dedicated enterprise team will design a custom solution for your infrastructure.
+                </div>
+            </details>
+
+            <details>
+                <summary data-i18n="faq_q3">Can I switch between Air, Vision, and Max?</summary>
+                <div class="answer">
+                    Absolutely. Our ecosystem is fluid. You can upgrade or downgrade your tier at the start of any billing cycle directly from your dashboard.
+                </div>
+            </details>
+        </section>
+
+    </main>
+
+    <footer>
+        <p data-i18n="footer_copyright">&copy; 2025 Corp Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

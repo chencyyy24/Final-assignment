@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corp | Future Simplified</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">CORP.</a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-i18n="nav_products">Products ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="product-air.html" data-i18n="tier_air_title">Corp Air</a></li>
+                            <li><a href="product-vision.html" data-i18n="tier_vision_title">Corp Vision</a></li>
+                            <li><a href="product-max.html" data-i18n="tier_max_title">Corp Max</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+                    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-tools">
+                <button id="lang-toggle" style="font-family: inherit;">CN / EN</button>
+                <button id="theme-toggle" data-i18n="btn_start">🌙 Dark</button>
+                <div class="hamburger">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 data-i18n="hero_title">Experience the Future.</h1>
+            <p data-i18n="hero_subtitle">Minimalist solutions for complex problems. Choose your tier.</p>
+            <a href="#tiers" class="btn" data-i18n="btn_start">Get Started</a>
+        </section>
+
+        <section class="logos-section">
+            <div class="logos-track">
+                <span class="logo-item">GOGGLE</span>
+                <span class="logo-item">AMAZONIA</span>
+                <span class="logo-item">FACEBOOKK</span>
+                <span class="logo-item">NETFLIXX</span>
+                <span class="logo-item">TESLAA</span>
+                <span class="logo-item">MICROSOFTT</span>
+                <span class="logo-item">SPACEXX</span>
+                <span class="logo-item">GOGGLE</span>
+                <span class="logo-item">AMAZONIA</span>
+                <span class="logo-item">FACEBOOKK</span>
+                <span class="logo-item">NETFLIXX</span>
+                <span class="logo-item">TESLAA</span>
+                <span class="logo-item">MICROSOFTT</span>
+                <span class="logo-item">SPACEXX</span>
+            </div>
+        </section>
+
+        <section id="tiers">
+            <div class="grid-3">
+                <article class="card air-card">
+                    <h3 data-i18n="tier_air_title">Air</h3>
+                    <p data-i18n="tier_air_desc">Essential & Fast. Light as a feather, powered by cloud.</p>
+                    <br>
+                    <a href="product-air.html" style="color: var(--color-air); font-weight: bold;" data-i18n="btn_start">Learn Air &rarr;</a>
+                </article>
+
+                <article class="card vision-card">
+                    <h3 data-i18n="tier_vision_title">Vision</h3>
+                    <p data-i18n="tier_vision_desc">Data & Visuals. See what others miss with AI analytics.</p>
+                    <br>
+                    <a href="product-vision.html" style="color: var(--color-vision); font-weight: bold;" data-i18n="btn_start">Learn Vision
+                        &rarr;</a>
+                </article>
+
+                <article class="card max-card">
+                    <h3 data-i18n="tier_max_title">Max</h3>
+                    <p data-i18n="tier_max_desc">Concierge Service. The ultimate premium experience.</p>
+                    <br>
+                    <a href="product-max.html" style="color: var(--color-max); font-weight: bold;" data-i18n="btn_start">Learn Max &rarr;</a>
+                </article>
+            </div>
+        </section>
+        <section class="features-section">
+            <h2 style="margin-bottom: 10px;" data-i18n="features_title">The Architecture of Speed</h2>
+            <p style="color: var(--text-light); margin-bottom: 60px;" data-i18n="features_subtitle">Built on principles, not just code.</p>
+
+            <div class="grid-3">
+                <div style="text-align: center;"> <span class="feature-icon">⚡</span>
+                    <h3 data-i18n="feature_zero_latency_title">Zero Latency</h3>
+                    <p style="color: var(--text-light); margin-top: 10px;" data-i18n="feature_zero_latency_desc">
+                        Our global edge network ensures your data travels the shortest distance possible.
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <span class="feature-icon">🛡️</span>
+                    <h3 data-i18n="feature_military_grade_title">Military Grade</h3>
+                    <p style="color: var(--text-light); margin-top: 10px;" data-i18n="feature_military_grade_desc">
+                        End-to-end encryption compliant with SOC2 and GDPR standards.
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <span class="feature-icon">🔄</span>
+                    <h3 data-i18n="feature_fluid_scaling_title">Fluid Scaling</h3>
+                    <p style="color: var(--text-light); margin-top: 10px;" data-i18n="feature_fluid_scaling_desc">
+                        From 10 to 10 million requests. The infrastructure breathes with your traffic.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); max-width: 200px; margin: 0 auto;">
+
+        <section class="quote-section">
+            <blockquote data-i18n="quote_max_tier">
+                "Before Corp, we were drowning in technical debt. The 'Max' tier didn't just solve our problems; it
+                reinvented our workflow."
+            </blockquote>
+            <cite data-i18n="quote_max_tier_cite">— Alex V., CTO of FinTech Global</cite>
+        </section>
+
+        <section class="cta-section">
+            <h2 data-i18n="cta_ready_to_evolve">Ready to Evolve?</h2>
+            <p data-i18n="cta_join_companies">Join 500+ forward-thinking companies building the future.</p>
+            <a href="contact.html" class="btn" data-i18n="btn_start_trial">Start Your Trial</a>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer_copyright">&copy; 2025 Corp Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

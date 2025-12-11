@@ -1,0 +1,476 @@
+/* style.css */
+
+/* =========================================
+   1. CSS Variables & Theme System
+   ========================================= */
+:root {
+    /* 核心色彩 - 默认 (Light Mode) */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #f9f9f9;
+    --border-color: #e0e0e0;
+
+    /* 默认强调色 (通用) */
+    --accent-color: #333333; 
+
+    /* 具体主题色定义 */
+    --color-air: #0EA5E9;    /* Sky Blue */
+    --color-vision: #8B5CF6; /* Electric Purple */
+    --color-max: #D4AF37;    /* Luxury Gold */
+
+    /* 布局与间距 */
+    --max-width: 1200px;
+    --header-height: 70px;
+    --radius: 8px;
+    --transition: 0.3s ease;
+}
+
+/* 深色模式重写 (Dark Mode Overrides) */
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-light: #cccccc;
+    --nav-bg: rgba(26, 26, 26, 0.95);
+    --card-bg: #2a2a2a;
+    --border-color: #444444;
+}
+
+/* 页面特定微主题 (Micro-Themes) - 改变该页面的主强调色 */
+body.theme-air { --accent-color: var(--color-air); }
+body.theme-vision { --accent-color: var(--color-vision); }
+body.theme-max { --accent-color: var(--color-max); }
+
+/* =========================================
+   2. Global Reset & Typography
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition), color var(--transition); /* 平滑切换深色模式 */
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+
+/* =========================================
+   3. Navigation Bar
+   ========================================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li { position: relative; }
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover { color: var(--accent-color); }
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    min-width: 150px;
+    border-radius: var(--radius);
+    display: none; /* 默认隐藏 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover .dropdown-menu { display: block; }
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+.dropdown-menu li a:hover {
+    background: var(--card-bg);
+    color: var(--accent-color); /* Hover时显示对应页面的强调色逻辑 */
+}
+
+/* 工具栏 (Dark Mode Toggle & Mobile Menu) */
+.nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+/* =========================================
+   4. Layout Components
+   ========================================= */
+main {
+    margin-top: var(--header-height);
+    padding: 40px 20px;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 80vh;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: #fff; /* 按钮文字始终为白 */
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Cards Grid */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card h3 { margin-bottom: 10px; font-size: 1.5rem; }
+.card p { color: var(--text-light); font-size: 0.95rem; }
+
+/* 特定卡片的高亮样式 (用于首页) */
+.card.air-card { border-top: 4px solid var(--color-air); }
+.card.vision-card { border-top: 4px solid var(--color-vision); }
+.card.max-card { border-top: 4px solid var(--color-max); }
+
+/* Form Styles */
+form { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-radius: var(--radius);
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: 2px solid var(--accent-color);
+    border-color: transparent;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-links.active { display: flex; }
+    .hamburger { display: block; }
+    
+    .dropdown-menu {
+        position: static;
+        display: block;
+        border: none;
+        box-shadow: none;
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    
+    .hero h1 { font-size: 2.5rem; }
+}
+
+/* about部分的css*/
+
+        /* 页面特定的内联样式，或者您可以将其移动到 style.css 中 */
+        .about-hero {
+            text-align: center;
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Split Section (Left Text, Right Image) */
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin: 80px 0;
+        }
+        
+        .split-text { flex: 1; }
+        .split-image { 
+            flex: 1; 
+            height: 300px; 
+            background-color: var(--card-bg); /* 占位符颜色 */
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+
+        /* Stats Bar */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 60px 0;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-item h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            margin: 0 auto 15px auto;
+        }
+
+        @media (max-width: 768px) {
+            .split-section { flex-direction: column; }
+            .stats-container { flex-direction: column; }
+        }
+/* about部分的css结束*/
+
+/* --- 新增首页部分样式 --- */
+
+/* 1. 无限滚动 Logo 栏 (Trusted By) */
+.logos-section {
+    padding: 40px 0;
+    overflow: hidden; /* 隐藏超出部分 */
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos-track {
+    display: inline-block;
+    animation: scroll 30s linear infinite; /* 30秒循环一次 */
+}
+
+.logo-item {
+    display: inline-block;
+    margin: 0 40px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.logo-item:hover { opacity: 1; color: var(--accent-color); }
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* 移动一半的距离以实现无缝 */
+}
+
+/* 2. 特性网格 (Why Us) */
+.features-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    color: var(--accent-color);
+}
+
+/* 3. 引用语 (Testimonial) */
+.quote-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: var(--bg-color); /* 保持背景一致，靠排版区分 */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+blockquote {
+    font-size: 1.8rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+blockquote::before {
+    content: "“";
+    font-size: 5rem;
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    color: var(--border-color);
+    z-index: -1;
+}
+
+cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* 4. 底部行动号召 (Bottom CTA) */
+.cta-section {
+    background: var(--text-color); /* 反色设计：深色模式下变白，浅色下变黑 */
+    color: var(--bg-color);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cta-section h2 { margin-bottom: 20px; font-size: 2.5rem; }
+.cta-section p { margin-bottom: 30px; opacity: 0.8; font-size: 1.1rem; }
+.cta-section .btn {
+    background: var(--bg-color);
+    color: var(--text-color); /* 按钮颜色反转 */
+}
+/* 语言切换按钮 */
+#lang-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+#lang-toggle:hover {
+    background-color: var(--card-bg);
+}
