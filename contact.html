@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Corp Inc.</title>
+    <link rel="icon" href="https://i.postimg.cc/09HkhgTN/QC-logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <style>
         /* --- 页面特定样式 (可移入 style.css) --- */
@@ -123,17 +124,17 @@
                 <form id="contact-form">
                     <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                         <div class="form-group" style="margin:0;">
-                            <label for="name" data-i18n="contact_form_name">Full Name *</label>
-                            <input type="text" id="name" placeholder="Jane Doe">
+                            <label for="name" data-i18n="label_name">Full Name *</label>
+                            <input type="text" id="name" placeholder="Jane Doe" data-i18n="placeholder_name">
                         </div>
                         <div class="form-group" style="margin:0;">
-                            <label for="email" data-i18n="contact_form_email">Work Email *</label>
-                            <input type="email" id="email" placeholder="jane@company.com">
+                            <label for="email" data-i18n="label_email">Work Email *</label>
+                            <input type="email" id="email" placeholder="jane@company.com" data-i18n="placeholder_email">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="department" data-i18n="contact_form_department">Department</label>
+                        <label for="department" data-i18n="label_dept">Department</label>
                         <select id="department" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-color); color: var(--text-color);">
                             <option value="sales" data-i18n="contact_form_department_sales">Sales & Partnerships</option>
                             <option value="support" data-i18n="contact_form_department_support">Technical Support</option>
@@ -143,11 +144,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message" data-i18n="contact_form_message">How can we help? *</label>
-                        <textarea id="message" rows="6" placeholder="Tell us about your project needs..."></textarea>
+                        <label for="message" data-i18n="label_msg">How can we help? *</label>
+                        <textarea id="message" rows="6" placeholder="Tell us about your project needs..." data-i18n="placeholder_msg"></textarea>
                     </div>
 
-                    <button type="submit" class="btn" style="width: 100%;" data-i18n="contact_form_send">Send Message</button>
+                    <button type="submit" class="btn" style="width: 100%;" data-i18n="btn_send">Send Message</button>
                     <p id="form-status" style="margin-top: 15px; display: none;"></p>
                 </form>
             </section>
@@ -162,22 +163,22 @@
                     <p><strong data-i18n="contact_jobs">Jobs:</strong> <a href="#">careers@corp.inc</a></p>
                 </div>
 
-                <div class="info-card" style="border-left-color: var(--color-max);"> <h3 data-i18n="contact_headquarters">Headquarters</h3>
-                    <p>100 Future Boulevard,</p>
-                    <p>San Francisco, CA 94107</p>
+                <div class="info-card" style="border-left-color: var(--color-max);"> <h3 data-i18n="contact_direct_channels">Headquarters</h3>
+                    <p data-i18n="contact_email_us">100 Future Boulevard,</p>
+                    <p data-i18n="contact_hq_title">San Francisco, CA 94107</p>
                     <p style="margin-top: 10px; font-size: 0.8rem;" data-i18n="contact_hours">Mon-Fri, 9am - 6pm PST</p>
                 </div>
 
                 <div class="office-grid">
                     <div class="info-card" style="margin:0; border-left-color: var(--color-vision);">
-                        <h3 data-i18n="contact_london">London</h3>
+                        <h3 data-i18n="contact_london">SHANGHAI</h3>
                         <p>12 Tech Avenue</p>
-                        <p>Shoreditch, UK</p>
+                        <p>Shoreditch, CN</p>
                     </div>
                     <div class="info-card" style="margin:0; border-left-color: var(--color-air);">
-                        <h3 data-i18n="contact_tokyo">Tokyo</h3>
+                        <h3 data-i18n="contact_tokyo">WUHAN</h3>
                         <p>Roppongi Hills</p>
-                        <p>Minato City, JP</p>
+                        <p>WUHAN City, CN</p>
                     </div>
                 </div>
             </section>
