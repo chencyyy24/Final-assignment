@@ -1,14 +1,11 @@
-/* script.js */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. Dark Mode Logic ---
+
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
-    
-    // 检查 LocalStorage 中是否已保存偏好
+
     const savedTheme = localStorage.getItem('theme');
-    
+
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
         toggleBtn.textContent = '☀️ Light';
@@ -18,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleBtn.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
-        
-        // 更新按钮文字并保存到 LocalStorage
+
         if (body.classList.contains('dark-mode')) {
             toggleBtn.textContent = '☀️ Light';
             localStorage.setItem('theme', 'dark');
@@ -29,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. Mobile Menu Logic ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -39,94 +34,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. Simple Form Validation (仅在 Contact 页面生效) ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            
+
             if (!name || !email) {
-                e.preventDefault(); // 阻止提交
+                e.preventDefault();
                 alert('Please fill in all required fields.');
             } else {
-                // 实际项目中这里会发送数据
                 alert('Message sent successfully!');
             }
         });
     }
 });
 
-/* contact部分的css开始*/
+const contactForm = document.getElementById('contact-form');
+const statusMsg = document.getElementById('form-status');
 
-/* script.js - 更新 Contact Form 部分 */
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-// ... (之前的 Dark Mode 和 Mobile Menu 代码保持不变) ...
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        const btn = contactForm.querySelector('button');
 
-    // --- 3. Enhanced Form Validation ---
-    const contactForm = document.getElementById('contact-form');
-    const statusMsg = document.getElementById('form-status');
+        if (!name.value || !email.value || !message.value) {
+            statusMsg.style.display = 'block';
+            statusMsg.style.color = 'red';
+            statusMsg.textContent = 'Please fill in all required fields marked with *.';
+            return;
+        }
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // 阻止默认提交
+        const originalBtnText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
 
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
-            const btn = contactForm.querySelector('button');
+        setTimeout(() => {
 
-            // 简单验证
-            if (!name.value || !email.value || !message.value) {
-                statusMsg.style.display = 'block';
-                statusMsg.style.color = 'red';
-                statusMsg.textContent = 'Please fill in all required fields marked with *.';
-                return;
-            }
+            statusMsg.style.display = 'block';
+            statusMsg.style.color = 'green';
+            statusMsg.textContent = `Thank you, ${name.value}. We have received your message.`;
 
-            // 模拟发送过程 (Loading State)
-            const originalBtnText = btn.textContent;
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
-            btn.style.opacity = '0.7';
+            contactForm.reset();
+
+            btn.textContent = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
 
             setTimeout(() => {
-                // 模拟成功
-                statusMsg.style.display = 'block';
-                statusMsg.style.color = 'green';
-                statusMsg.textContent = `Thank you, ${name.value}. We have received your message.`;
-                
-                // 重置表单
-                contactForm.reset();
-                
-                // 恢复按钮
-                btn.textContent = originalBtnText;
-                btn.disabled = false;
-                btn.style.opacity = '1';
-                
-                // 3秒后清除成功消息
-                setTimeout(() => {
-                    statusMsg.style.display = 'none';
-                }, 5000);
+                statusMsg.style.display = 'none';
+            }, 5000);
 
-            }, 1500); // 1.5秒延迟模拟网络请求
-        });
-    }
-    
-    /* script.js */
+        }, 1500);
+    });
+}
 
-// 1. 定义翻译字典 (The Dictionary)
+
 const translations = {
     en: {
-        // --- Navigation (Global) ---
         nav_home: "Home",
         nav_products: "Products ▾",
         nav_about: "About",
         nav_contact: "Contact",
         footer_copyright: "© 2025 Corp Inc. All rights reserved.",
         btn_start_trial: "Start Your Trial",
-
-        // --- Index Page ---
         hero_title: "Boundless Vision.",
         hero_subtitle: "Minimalist solutions for seamless viewing. Choose your perfect tier.",
         tier_air_title: "Air",
@@ -147,8 +123,6 @@ const translations = {
         quote_max_tier_cite: "— Alex V., CTO of FinTech Global",
         cta_ready_to_evolve: "Ready to Evolve?",
         cta_join_companies: "Join 500+ forward-thinking partners building the future of media.",
-
-        // --- About Page (NEW) ---
         about_hero_title: "We Are Corp.",
         about_hero_desc: "Bringing together global cinema across cultures and borders. With a single click, immerse yourself in an infinite forest of stories and open your private vision.",
         about_mission_title: "Our Mission",
@@ -164,32 +138,25 @@ const translations = {
         role_cto: "CTO & Architect",
         role_product: "Head of Product",
         role_design: "Design Director",
-
-        // --- Contact Page (NEW) ---
         contact_hero_title: "Get in Touch",
         contact_hero_desc: "Start a conversation. We are ready to listen.",
         contact_form_title: "Send a Message",
-        // Form Labels
         contact_form_name: "Full Name *",
         contact_form_email: "Work Email *",
         contact_form_department: "Department",
         contact_form_message: "How can we help? *",
         contact_form_send: "Send Message",
-        // Form Placeholders (Input attributes)
         placeholder_name: "Jane Doe",
         placeholder_email: "jane@company.com",
         placeholder_msg: "Tell us about your project needs...",
-        // Form Select Options
         contact_form_department_sales: "Sales & Partnerships",
         contact_form_department_support: "Technical Support",
         contact_form_department_press: "Media & Press",
         contact_form_department_other: "General Inquiry",
-        // Contact Info Side
         contact_direct_channels: "Direct Channels",
         contact_email_us: "Email Us",
         contact_hq_title: "Headquarters",
         contact_hours: "Mon-Fri, 9am - 6pm PST",
-        // FAQ
         faq_title: "Frequently Asked Questions",
         faq_q1: "What is the typical response time?",
         faq_a1: "For Max members, we respond within 1 hour. For Standard inquiries, please allow up to 24 hours via email.",
@@ -283,89 +250,66 @@ const translations = {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Language Toggle Logic ---
     const langBtn = document.getElementById('lang-toggle');
-    
-    // 1. 获取用户存储的语言，如果没有则默认为英文 'en'
+
     let currentLang = localStorage.getItem('lang') || 'en';
 
-    // 2. 初始化页面语言
     updateLanguage(currentLang);
 
-    // 3. 点击事件
     if (langBtn) {
         langBtn.addEventListener('click', () => {
-            // 切换语言
             currentLang = currentLang === 'en' ? 'zh' : 'en';
-            // 更新页面
             updateLanguage(currentLang);
-            // 保存设置
             localStorage.setItem('lang', currentLang);
         });
     }
 
-    // --- 核心翻译函数 ---
     function updateLanguage(lang) {
-        // 1. 遍历所有带有 data-i18n 属性的元素
         const elements = document.querySelectorAll('[data-i18n]');
-        
+
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
-            // 检查字典中是否有对应的翻译
             if (translations[lang] && translations[lang][key]) {
-                // 如果是 input 的 placeholder (比如搜索框)
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translations[lang][key];
                 } else {
-                    // 普通文本
                     el.textContent = translations[lang][key];
                 }
             }
         });
 
-        // 2. 更新按钮文字
         if (langBtn) {
             langBtn.textContent = lang === 'en' ? '中文' : 'English';
         }
-        
-        // 3. (可选) 给 Body 加个 class 方便针对中文做特殊样式
-        if(lang === 'zh') {
+
+        if (lang === 'zh') {
             document.body.classList.add('lang-zh');
         } else {
             document.body.classList.remove('lang-zh');
         }
     }
 
-    // ... (保留之前的 Dark Mode 和 Menu 代码) ...
-    // --- Dark Mode Logic ---
-    // ...
 });
 function updateLanguage(lang) {
-    // 1. 遍历所有带有 data-i18n 属性的元素
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        // 检查字典中是否有对应的翻译
         if (translations[lang] && translations[lang][key]) {
-            // 如果是 input 的 placeholder (比如搜索框)
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                 el.placeholder = translations[lang][key];
             } else {
-                // 普通文本 - 使用 innerHTML 以支持 <strong> 等标签
                 el.innerHTML = translations[lang][key];
             }
         }
     });
 
-    // 2. 更新按钮文字
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
-        langBtn.textContent = lang === 'en' ? 'CN / EN' : 'English'; // 稍微优化了按钮文字逻辑
+        langBtn.textContent = lang === 'en' ? 'CN / EN' : 'English';
     }
-    
-    // 3. 给 Body 加 class
-    if(lang === 'zh') {
+
+    if (lang === 'zh') {
         document.body.classList.add('lang-zh');
     } else {
         document.body.classList.remove('lang-zh');
